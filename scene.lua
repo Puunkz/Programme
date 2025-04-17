@@ -5,8 +5,10 @@ local winImage
 local loseImage
 
 scene.dronesDestroyed = 0
+local resetGame
 
-scene.load = function ()
+scene.load = function (resetGameFunction)
+    resetGame = resetGameFunction
     scene.backgroundMusic = love.audio.newSource("assets/musique/Musique_menu.ogg", "stream")
     scene.gameMusic = love.audio.newSource("assets/musique/Musique_jeu.ogg", "stream")
     scene.gameWinMusic = love.audio.newSource("assets/musique/Musique_win.ogg", "stream")
@@ -29,20 +31,28 @@ scene.draw = function()
     if scene.currentScene == "win" then
         love.graphics.draw(winImage, 0, 0, 0, SCREEN_SIZE.width / winImage:getWidth(), SCREEN_SIZE.height / winImage:getHeight())
         love.graphics.printf("You destroyed " .. scene.dronesDestroyed .. " drones!", 0, SCREEN_SIZE.height - 200, SCREEN_SIZE.width, "center")
-        love.graphics.printf("Press Escape to menu", 0, SCREEN_SIZE.height - 150, SCREEN_SIZE.width, "center")
+        love.graphics.printf("Press ESCAPE to menu", 0, SCREEN_SIZE.height - 150, SCREEN_SIZE.width, "center")
+        love.graphics.printf("Press SPACE to play again", 0, SCREEN_SIZE.height - 100, SCREEN_SIZE.width, "center")
         
     end
 
     if scene.currentScene == "lose" then
         love.graphics.draw(loseImage, 0, 0, 0, SCREEN_SIZE.width / loseImage:getWidth(), SCREEN_SIZE.height / loseImage:getHeight())
         love.graphics.printf("You destroyed " .. scene.dronesDestroyed .. " drones!", 0, SCREEN_SIZE.height - 200, SCREEN_SIZE.width, "center")
-        love.graphics.printf("Press Escape to menu", 0, SCREEN_SIZE.height - 150, SCREEN_SIZE.width, "center")
+        love.graphics.printf("Press ESCAPE to menu", 0, SCREEN_SIZE.height - 150, SCREEN_SIZE.width, "center")
+        love.graphics.printf("Press SPACE to play again", 0, SCREEN_SIZE.height - 100, SCREEN_SIZE.width, "center")
     end
 end
 
 scene.keypressed = function(key)
     if scene.currentScene == "menu" and key == "space" then
+        resetGame()
         scene.currentScene = "game"
+    end
+
+    if (scene.currentScene == "win" or scene.currentScene == "lose") and key == "space" then
+        scene.currentScene = "game"
+        resetGame()
     end
 end
 

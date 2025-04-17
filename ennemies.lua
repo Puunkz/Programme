@@ -12,6 +12,7 @@ local droneState = {
 }
 
 ennemies.init = function(tank)
+    drones = {}
     ennemies.body = ennemies.createBody()
     ennemies.tankBody = tank.body 
 
