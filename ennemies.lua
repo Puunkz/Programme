@@ -168,5 +168,4 @@ ennemies.draw = function()
         
     end
 end
-
 return ennemies

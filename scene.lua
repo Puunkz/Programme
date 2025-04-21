@@ -64,5 +64,4 @@ scene.checkCondition = function(tank)
         scene.currentScene = "win"
     end
 end
-
 return scene

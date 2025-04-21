@@ -177,5 +177,4 @@ tank.draw = function()
 
     hpBar(50, 50, 200, 20, tank.body.vie, 100)
 end
-
 return tank
