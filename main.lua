@@ -31,19 +31,19 @@ function love.update(dt)
 
         ennemies.update(dt)
 
-        if love.keyboard.isDown("z") then
+        if love.keyboard.isDown("z", "up") then
             tank.moveForward(dt)
-        elseif love.keyboard.isDown("s") then
+        elseif love.keyboard.isDown("s", "down") then
             tank.moveBackward(dt)
         end
 
-        if love.keyboard.isDown("q") then
+        if love.keyboard.isDown("q", "left") then
             tank.rotateLeft(dt)
-        elseif love.keyboard.isDown("d") then
+        elseif love.keyboard.isDown("d", "right") then
             tank.rotateRight(dt)
         end 
     
-        if love.keyboard.isDown ("z") == false and love.keyboard.isDown("s") == false then
+        if love.keyboard.isDown ("z", "up") == false and love.keyboard.isDown("s", "down") == false then
             tank.stopMoving()
         end
 
@@ -78,7 +78,7 @@ function love.draw()
         map.draw()
         tank.draw()
         ennemies.draw()
-    elseif scene.currentScene == "menu" or scene.currentScene == "win" or scene.currentScene == "lose"  then
+    elseif scene.currentScene == "menu" or scene.currentScene == "win" or scene.currentScene == "lose" then
         scene.draw()  
     end
 end

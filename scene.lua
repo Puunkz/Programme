@@ -50,7 +50,7 @@ scene.keypressed = function(key)
         scene.currentScene = "game"
     end
 
-    if (scene.currentScene == "win" or scene.currentScene == "lose") and key == "space" then
+   if  scene.currentScene == "win" or scene.currentScene == "lose" and key == "space" then
         scene.currentScene = "game"
         resetGame()
     end

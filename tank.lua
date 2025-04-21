@@ -170,6 +170,11 @@ tank.draw = function()
         )
     end
 
+    --compteur de kills
+    love.graphics.setColor(0, 0, 0)
+    love.graphics.setFont(love.graphics.newFont(20))
+    love.graphics.print("Drones destroyed: " .. scene.dronesDestroyed .. " /25", 20, 80)
+
     hpBar(50, 50, 200, 20, tank.body.vie, 100)
 end
 
